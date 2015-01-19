@@ -1,2 +1,89 @@
-<h1>hola</h1>
-<h1>no me cambien ni costra, carajo!!</h1>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="afiliadosPac"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Registro en linea</title>
+        <meta name="description" content="afiliacion, pac, partido accion ciudana">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        
+        <script src="js/vendor/angular.js"></script>
+
+        <script src="js/vendor/ui-bootstrap-tpls-0.12.0.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script> -->
+        
+        <script src="js/plugins.js"></script>
+
+        <script src="js/main.js"></script> 
+
+
+    </head>
+    <body><!-- ng-controller="AfiliadosPacController as AfilPacCtrl" -->
+
+ 
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header>  
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h1>Partido Acción Ciudadana</h1>
+                        <h2>Sistema de afiliación web</h2>                           
+                    </div>
+                </div>               
+            </div>                    
+        </header>
+
+        <main>
+            <div class="container-fluid"> 
+                <div class="row">
+                    <div class="col-md-5" ng-controller="ConsultaCedulaController as ConsulCedCtrl">
+                        <form name="formConsultaCedula" role="form">
+                            <div class="form-group" ng-class="claseInput">
+                                <div class="input-group">
+                                  <span class="input-group-addon">Cédula</span>
+                                  <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>                                 
+                                </div>
+                            </div>
+                            <div class="button-group pull-right">
+                                <button type="submit" class="btn btn-primary" ng-disabled="!formConsultaCedula.$valid" ng-click="consultar()">Consultar</button>
+                                <button type="button" class="btn btn-default" ng-click="limpiar()">Limpiar</button>
+                            </div>
+                        </form>
+                        <pre ng-model="result">
+                            {{result}}
+                        </pre>                   
+                    </div>
+                </div>               
+            </div>
+            <pre ng-model="result">
+            {{result}}         
+        </main>
+        <footer>
+            <div class="container-fluid">
+                <div class="row"></div>             
+            </div>
+        </footer>       
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<!--         <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script> -->
+    </body>
+</html>
