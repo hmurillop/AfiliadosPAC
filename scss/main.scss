@@ -1,0 +1,22 @@
+@import "bootstrap";
+
+.container-fluid{
+	width: 80%;
+}
+form.consultar-cedula{
+	margin-top:1em;
+	
+	.input-group{
+		width: 10px;
+	}
+	.button-group{
+		button:first-child{
+			margin-right: 1em;
+		}
+	}
+}
+
+
+
+
+

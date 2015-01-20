@@ -1,0 +1,19 @@
+selector-extend($selector, $extendee, $extender)
+
+.ir{
+  display: block;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@mixin sprite ($png-url){
+	@extend .ir;
+	background: url('$png-url') 0 0 no-repeat;
+}
+
+
+
+// .sprite-scroll-up{
+// 	background-position: 0 0;
+// }
