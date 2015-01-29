@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<h1>holiwis</h1>
-<h1>no me cambien ni costra, carajo!!</h1>
-=======
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -62,18 +58,18 @@
                                 </div>
                             </div>
                             <div class="button-group pull-right">
-                                <button type="submit" class="btn btn-primary" ng-disabled="!formConsultaCedula.$valid" ng-click="consultar()">Consultar</button>
+                                <button type="submit" class="btn btn-primary" ng-disabled="!formConsultaCedula.$valid">Consultar</button>
                                 <button type="button" class="btn btn-default" ng-click="limpiar()">Limpiar</button>
                             </div>
+                            <pre>
+                                {{user.afiliado_cedula}}
+                            </pre>
+                            
                         </form>
-                        <pre ng-model="result">
-                            {{result}}
-                        </pre>                   
+                       
                     </div>
                 </div>               
-            </div>
-            <pre ng-model="result">
-            {{result}}         
+            </div>      
         </main>
         <footer>
             <div class="container-fluid">
@@ -91,4 +87,3 @@
         </script> -->
     </body>
 </html>
->>>>>>> origin/dev
