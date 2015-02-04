@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 /**Clase utilizada para accesar a la base de datos
@@ -118,4 +119,16 @@ class BaseDatos_AD{
 		}
 	}
 }
+=======
+$host     = 'www.hectormurillo.net';
+$database = 'db_pac';
+$username = 'pac';
+$password = '+*V?e,!}tH$(';
+
+// $host     = '127.0.0.1';
+// $database = 'db_pac';
+// $username = 'root';
+// $password = '';
+
+>>>>>>> master
 ?>
