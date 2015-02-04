@@ -18,8 +18,8 @@
 
         <script src="js/vendor/ui-bootstrap-tpls-0.12.0.js"></script>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
         
         <script src="js/plugins.js"></script>
 
@@ -27,10 +27,7 @@
 
 
     </head>
-    <body><!-- ng-controller="AfiliadosPacController as AfilPacCtrl" -->
-
- 
-
+    <body ng-controller="AfiliadosPacController as AfilPacCtrl">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -45,31 +42,8 @@
                 </div>               
             </div>                    
         </header>
-
         <main>
-            <div class="container-fluid"> 
-                <div class="row">
-                    <div class="col-md-5" ng-controller="ConsultaCedulaController as ConsulCedCtrl">
-                        <form name="formConsultaCedula" role="form">
-                            <div class="form-group" ng-class="claseInput">
-                                <div class="input-group">
-                                  <span class="input-group-addon">Cédula</span>
-                                  <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>                                 
-                                </div>
-                            </div>
-                            <div class="button-group pull-right">
-                                <button type="submit" class="btn btn-primary" ng-disabled="!formConsultaCedula.$valid" ng-click="consultar()">Consultar</button>
-                                <button type="button" class="btn btn-default" ng-click="limpiar()">Limpiar</button>
-                            </div>
-                        </form>
-                        <pre ng-model="result">
-                            {{result}}
-                        </pre>                   
-                    </div>
-                </div>               
-            </div>
-            <pre ng-model="result">
-            {{result}}         
+            <div class="container-fluid" ng-include="partial"></div>     
         </main>
         <footer>
             <div class="container-fluid">
