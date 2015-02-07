@@ -1,0 +1,11 @@
+.custom-center,
+img{
+	margin: 0 auto;
+}
+img{
+	width: 50% ;
+	display: block;
+}
+header{
+	margin-bottom: 1em;
+}

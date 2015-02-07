@@ -5,7 +5,16 @@
 
 
 	app.controller('AfiliadosPacController', ['$scope','$http', function ($scope, $http) {
-		$scope.partial = 'app/BuscarCedula/buscarCedula.html';//buscar-cedula.html
+		$scope.partials = {
+			buscarCedula : 'app/BuscarCedula/buscarCedula.html',
+			registroAfiliado : 'app/RegistroAfiliado/formRegistro.html'
+
+		}
+		$scope.partial = $scope.partials.buscarCedula;
+
+		$scope.setPartial = function (url) {
+			$scope.partial = url;
+		}
 	}]);
 
 
@@ -48,11 +57,16 @@
 					}else{
 						$scope.afiliado = false;
 					};
+					if (!$scope.afiliado) {
+						$scope.setPartial($scope.partials.registroAfiliado);
+					};
 					$scope.open('lg');//abre el modal
+					
 				})
 				.error(function(data, status) {
 					$scope.data = data || "Error en consulta";
-					$scope.status = status;			
+					$scope.status = status;		
+					
 				}
 			);
 			//post request end 		 			

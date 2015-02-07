@@ -1,0 +1,70 @@
+
+<h4>Formulario de solicitud de afiliacion</h4>
+
+<form ng-submit="registrar()" name="formRegistroAfiliado" role="form">
+
+    <div class="form-group" ng-class="claseInput">
+
+        <div class="input-group">
+          <span class="input-group-addon">Cédula</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Primer Apellido</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Segundo Apellido</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Nombre</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Teléfono Habitacion</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon">Teléfono Oficina</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Teléfono Celular</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Fax</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Correo Electrónico</span>
+          <input type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Dirección exacta</span>
+          <textarea type="text" class="form-control" placeholder="Ingresar cédula" ng-model="cedula" value="{{cedula}}" required>
+        </div>  
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" class="form-control" value="" ng-model="">
+            Deseo colaborar económicamente
+          </label>
+        </div>
+    </div>
+    
+    <div class="button-group pull-right">
+        <button type="submit" class="btn btn-primary" ng-disabled="!formConsultaCedula.$valid">Consultar</button>
+        <button type="button" class="btn btn-default" ng-click="limpiar()">Limpiar</button>
+    </div>
+
+</form>
