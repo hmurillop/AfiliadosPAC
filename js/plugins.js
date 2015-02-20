@@ -19,6 +19,11 @@
             console[method] = noop;
         }
     }
+    
 }());
 
-// Place any jQuery/helper plugins in here.
+  $('.selectpicker').selectpicker({
+      style: 'btn-info'
+  });
+
+  $('.selectpicker').selectpicker('show');

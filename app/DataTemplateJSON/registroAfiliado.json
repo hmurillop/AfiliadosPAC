@@ -1,0 +1,22 @@
+{
+	"cedula": null,
+	"nombre": null,
+	"apellido1": null,
+	"apellido2": null,
+	"ocupacion": null,
+	"tel": null,
+	"tel_oficina": null,
+	"tel_cel": null,
+	"tel_fax": null,
+	"email": null,
+	"direccion": null,
+	"vive": null,
+	"postal": null,
+	"contribuyente": null,
+	"colaborador": null,
+	"colabora_organizacion": null,
+	"colabora_miembro_mesa": null,
+	"colabora_fiscal": null,
+	"colabora_transporte": null,
+	"colabora_otros": null
+}

@@ -1,6 +1,531 @@
-<div class="row">
-    <div ng-controller="RegisroAfiliadoController as RegAfilCtrl" class="col-sm- custom-center" ng-include="partial">
+<div ng-controller="RegistroAfiliadoController as RegAfilCtrl">    
+	<h3>Solicitud de afiliación</h3>
+    <h4>Por favor ingrese la inforamcion requerida.</h4>
+
+    <form ng-submit="formRegistro.$valid && registrar()" id="formRegistro" name="formRegistro" role="form" novalidate autocomplete="off"> 
+
+        <div class="row-fluid">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="form-group">               
+                    <label for="cedula">Cédula:</label>
+                    <input id="cedula" type="text" class="form-control" placeholder="{{solicitud.cedula}}" disabled 
+                        value="{{solicitud.cedula}}"
+                        ng-model="registro.cedula"
+                    >                    
+                </div>
+                <div class="form-group has-feedback"        
+                    ng-class="{     
+                        'has-warning' : formRegistro.apellido1.$invalid && !formRegistro.apellido1.$pristine || 
+                                        formRegistro.apellido1.$invalid && formRegistro.$submitted,
+                        'has-error' : formRegistro.apellido1.$error.pattern || formRegistro.apellido1.$error.ng-maxlength,
+                        'has-success' : formRegistro.apellido1.$valid
+                    }">    
+
+                    <label for="apellido1" class="control-label">Primer apellido:</label>
+                    <input id="apellido1" type="text" class="form-control" name="apellido1" placeholder="Ingrese su apellido"
+                        ng-required="true"
+                        ng-model="registro.apellido1"
+                        ng-maxlength="45"
+                        ng-pattern="RegExp.char"    
+                    >
+                    <span ng-show="formRegistro.apellido1.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+
+                    <span 	ng-show="formRegistro.$submitted && formRegistro.apellido1.$invalid 
+                    				|| formRegistro.apellido1.$error.pattern 
+                    				|| formRegistro.apellido1.$invalid && formRegistro.apellido1.$dirty" 
+                    		class="glyphicon glyphicon-remove form-control-feedback" 
+                    		aria-hidden="true">
+                    </span>
+
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.apellido1.$error.pattern">
+                        Debe ingresar únicamente <strong>letras</strong>.
+                    </div>   
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.apellido1.$error.maxlength">
+                       Demasiado <strong>largo</strong>. Debe ser máximo <strong>45</strong> caracteres.
+                    </div>                         
+                </div>
+                <!-- Apellido 2  -->
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : formRegistro.apellido2.$invalid && !formRegistro.apellido2.$pristine 
+                        				|| formRegistro.apellido2.$invalid && formRegistro.$submitted,
+                        'has-error' : formRegistro.apellido2.$error.pattern 
+                        				|| formRegistro.apellido2.$error.maxlength,
+                        'has-success' : formRegistro.apellido2.$valid
+                    }">  
+                    <label for="apellido2" class="control-label">Segundo apellido:</label>
+                    <input id="apellido2" type="text" name="apellido2" class="form-control"  placeholder="Ingrese su apellido" 
+                        ng-required="true"           
+                        ng-model="registro.apellido2"
+                        ng-maxlength="45"
+                        ng-pattern="RegExp.char"
+                    >
+                    <span ng-show="formRegistro.apellido2.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    <span 	ng-show="formRegistro.$submitted && formRegistro.apellido2.$invalid 
+                    				|| formRegistro.apellido2.$error.pattern 
+                    				|| formRegistro.apellido2.$invalid && formRegistro.apellido2.$dirty" 
+                    		class="glyphicon glyphicon-remove form-control-feedback" 
+                    		aria-hidden="true">
+                    </span>
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.apellido2.$error.pattern">
+                        Debe ingresar únicamente <strong>letras</strong>.
+                    </div>   
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.apellido2.$error.maxlength">
+                       Demasiado <strong>largo</strong>. Debe ser máximo <strong>45</strong> caracteres.
+                    </div> 
+                </div>
+                <!-- FIN Apellido 2  -->
+                <!-- Nombre -->
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : formRegistro.nombre.$invalid && !formRegistro.nombre.$pristine 
+                        				|| formRegistro.nombre.$invalid && formRegistro.$submitted,
+                        'has-error' : formRegistro.nombre.$error.pattern
+                        				|| formRegistro.nombre.$error.maxlength,
+                        'has-success' : formRegistro.nombre.$valid
+                    }">  
+                    <label for="nombre" class="control-label">Nombre:</label>
+                    <input id="nombre" type="text" name="nombre"class="form-control"  placeholder="Ingrese su nombre" ng-required="true"
+                        ng-model="registro.nombre"
+                        ng-maxlength="45"
+                        ng-pattern="RegExp.char"
+                    > 
+                    <span ng-show="formRegistro.nombre.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+
+                    <span 	ng-show="formRegistro.$submitted && formRegistro.nombre.$invalid 
+                    				|| formRegistro.nombre.$error.pattern 
+                    				|| formRegistro.nombre.$invalid && formRegistro.nombre.$dirty" 
+                    		class="glyphicon glyphicon-remove form-control-feedback" 
+                    		aria-hidden="true">
+                    </span>
+
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.nombre.$error.pattern">
+                        Debe ingresar únicamente <strong>letras</strong>.
+                    </div>   
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.nombre.$error.maxlength">
+                       Demasiado <strong>largo</strong>. Debe ser máximo <strong>45</strong> caracteres.
+                    </div>                                       
+                </div>
+                <!-- FIN Nombre -->
+
+<!--                 <div class="form-group has-feedback"> 
+                    <label>Género:</label>                  
+                    <select class="form-control" ng-model="registro.sexo" ng-required="true">
+                        <option value="">Seleccione su genero:</option> 
+                        <option value="F">Femenino</option>   
+                        <option value="M">Masculino</option>
+                    </select>       
+                </div>    -->             
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : !formRegistro.ocupacion.$valid && !formRegistro.ocupacion.$pristine || 
+                                        !formRegistro.ocupacion.$valid && formRegistro.$submitted,
+                        'has-error' : formRegistro.ocupacion.$error.pattern,
+                        'has-success' : formRegistro.ocupacion.$valid
+                    }">  
+                    <label for="ocupacion" class="control-label">Ocupación:</label>
+                    <select id="ocupacion" class="form-control" name="ocupacion" ng-model="registro.ocupacion" ng-required="true">
+                        <option value="">Seleccione:</option>
+                        <option ng-repeat="ocupacion in ocupaciones" value="{{ocupacion.id}}" >{{ocupacion.nombre}}</option>
+                    </select>              
+                </div>                            
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : formRegistro.apartado.$invalid && !formRegistro.apartado.$pristine || 
+                                        formRegistro.apartado.$invalid && formRegistro.$submitted,
+                        'has-error' : formRegistro.apartado.$error.pattern,
+
+                        'has-success' : formRegistro.apartado.$valid && formRegistro.$submitted
+                                  || formRegistro.apartado.$valid && formRegistro.apartado.$dirty
+                    }">  
+                    <label for="postal" class="control-label">Apartado postal:</label>
+                    <input id="postal" type="text" class="form-control" name="apartado" placeholder="Ingrese su apartado postal"
+                        ng-model="registro.postal"
+                    >
+                    <span 
+                        ng-show="formRegistro.apartado.$valid && formRegistro.$submitted
+                                || formRegistro.apartado.$valid && formRegistro.apartado.$dirty" 
+                        class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true">
+                    </span>
+                    <span 
+                        ng-show="formRegistro.$submitted && !formRegistro.apartado.$valid || formRegistro.apartado.$error.pattern || formRegistro.apellido2.$invalid && formRegistro.apellido2.$dirty"
+                    class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                      
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.apartado.$error.maxlength">
+                       Demasiado <strong>largo</strong>. Debe ser máximo <strong>45</strong> caracteres.
+                    </div>                                         
+                </div> 
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : !formRegistro.provincia.$valid && !formRegistro.provincia.$pristine || 
+                                        !formRegistro.provincia.$valid && formRegistro.$submitted,                       
+                        'has-success' : formRegistro.provincia.$valid
+                    }">  
+                   <label class="control-label">Residencia actual:</label>
+                   <div class="form-group">                    
+                        <select class="form-control" ng-model="registro.distelec.provincia" name="provincia" ng-required="true">
+                            <option value="">Provincia:</option>
+                            <option value="{{provincia.codigo}}" 
+                                ng-repeat="provincia in distelec.provincia"
+                            >{{provincia.codigo}} - {{provincia.nombre}}</option>
+                        </select>       
+                    </div>
+
+                    <div class="form-group has-feedback"
+                        ng-class="{     
+                            'has-warning' : !formRegistro.canton.$valid && !formRegistro.canton.$pristine || 
+                                            !formRegistro.canton.$valid && formRegistro.$submitted,
+                            'has-success' : formRegistro.canton.$valid
+                        }">                   
+                        <select class="form-control" name="canton" ng-model="registro.distelec.canton" ng-disabled="!registro.distelec.provincia" ng-required="true">
+                            <option value="">Cantón:</option>    
+                            <option value="{{canton.codigo}}" 
+                                ng-repeat="canton in distelec.provincia[registro.distelec.provincia].canton"
+                            >{{canton.codigo}} - {{canton.nombre}}</option>
+                        </select>       
+                    </div>
+                    <div class="form-group has-feedback"
+                        ng-class="{     
+                            'has-warning' : !formRegistro.distrito.$valid && !formRegistro.distrito.$pristine || 
+                                            !formRegistro.distrito.$valid && formRegistro.$submitted,
+                            'has-success' : formRegistro.distrito.$valid
+                        }">                  
+                        <select class="form-control" name="distrito" ng-model="registro.distelec.distrito" ng-disabled="!registro.distelec.canton" ng-required="true">
+                            <option value="">Región:</option>
+                            <!-- <option value="" ng-show="!registro.distelec.canton" >Debe de seleccionar una canton</option> -->
+                            <option value="{{distrito.codigo}}" 
+                                ng-repeat="distrito in distelec.provincia[registro.distelec.provincia].canton[registro.distelec.canton].distrito"
+                            >{{distrito.codigo}} - {{distrito.nombre}}</option>
+                        </select>       
+                    </div>              
+            </div>                 
+            <div class="form-group has-feedback"
+                ng-class="{     
+                    'has-warning' : !formRegistro.direccion.$valid && !formRegistro.direccion.$pristine || 
+                                    !formRegistro.direccion.$valid && formRegistro.$submitted,
+                    'has-error' : formRegistro.direccion.$error.pattern,
+                    'has-success' : formRegistro.direccion.$valid
+                }">  
+                <label for="direccion" class="control-label">Dirección exacta</label>
+                <textarea name="direccion" id="direccion" rows="4" class="form-control"
+                    placeholder="Por favor ingrese su direccion completa de residencia"
+                    ng-model="registro.direccion" ng-required="true"
+                    ng-value="{{registro.distelec.provincia}}"
+                >
+                </textarea>
+                <span ng-show="formRegistro.direccion.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+
+                <span ng-show="!formRegistro.direccion.$valid && !formRegistro.direccion.$pristine || 
+                                    !formRegistro.direccion.$valid && formRegistro.$submitted" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+
+                <div class="alert alert-danger" role="alert" ng-show="formRegistro.direccion.$error.pattern">
+                    Debe ingresar únicamente <strong>letras</strong>.
+                </div>   
+                <div class="alert alert-danger" role="alert" ng-show="formRegistro.direccion.$error.maxlength">
+                   Demasiado <strong>largo</strong>. Debe ser máximo <strong>45</strong> caracteres.
+                </div>                                     
+            </div>            
+                            
+            </div>                                         
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+<div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : !formRegistro.email.$valid && !formRegistro.email.$pristine || 
+                                        !formRegistro.email.$valid && formRegistro.$submitted,
+                        'has-error' : formRegistro.email.$error.pattern,
+                        'has-success' : formRegistro.email.$valid
+                    }">  
+                    <label for="email" class="control-label">Correo electrónico</label>
+                    <input id="email" name="email" type="email" class="form-control" placeholder="Ingrese su correo electrónico" 
+                        ng-required="true"
+                        ng-model="registro.email"
+                        ng-maxlength="40"
+                    >
+                    <span ng-show="formRegistro.email.$valid" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+
+                    <span ng-show="formRegistro.$submitted && !formRegistro.email.$valid || formRegistro.email.$error.pattern || !formRegistro.email.$valid && formRegistro.email.$dirty" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+
+                    <div class="alert alert-warning" role="alert" ng-show="formRegistro.email.$invalid && formRegistro.email.$dirty">
+                        Por favor ingrese una dirección <strong>valida</strong> de <strong>correo electrónico</strong>.
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.email.$error.maxlength">
+                       Demasiado <strong>largo</strong>. Debe ser máximo <strong>40</strong> caracteres.
+                    </div>                                         
+                </div>
+
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : !formRegistro.tel.$valid && !formRegistro.tel.$pristine || 
+                                        !formRegistro.tel.$valid && formRegistro.$submitted,
+                        'has-error' : formRegistro.tel.$error.pattern,
+                        'has-success' : formRegistro.tel.$valid
+                    }">  
+                    <label for="tel" class="control-label">Teléfono habitacion</label>
+                    <input id="tel" name="tel" type="text" class="form-control"  placeholder="Ingrese su número de teléfono" 
+                        ng-required="true"
+                        ng-model="registro.tel"
+                        ng-pattern="RegExp.integer"
+                        ng-maxlength="8"  
+                        ng-minlength="8"                         
+                    >
+                   <span ng-show="formRegistro.tel.$valid && formRegistro.tel.$submitted
+                                  || formRegistro.tel.$valid && formRegistro.tel.$dirty" 
+                         class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true">
+                    </span>
+
+                    <span ng-show="formRegistro.tel.$invalid && formRegistro.$submitted
+                                   || formRegistro.tel.$invalid && formRegistro.tel.$dirty" 
+                          class="glyphicon glyphicon-remove form-control-feedback" 
+                          aria-hidden="true">
+                    </span>
+
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.tel.$error.pattern || formRegistro.tel.$error.maxlength">
+                        Por favor ingrese solo:</br><strong>8 digitos - 22445566</strong>.
+                    </div>                            
+                </div>
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : !formRegistro.tel_celular.$valid && !formRegistro.tel_celular.$pristine || 
+                                        !formRegistro.tel_celular.$valid && formRegistro.$submitted,
+                        'has-error' : formRegistro.tel_celular.$error.pattern,
+                        'has-success' : formRegistro.tel_celular.$valid
+                    }">  
+                    <label for="tel_celular" class="control-label">Teléfono celular</label>
+                    <input id="tel_celular" type="text" class="form-control" name="tel_celular" placeholder="Ingrese su número celular" 
+                        ng-required="true"
+                        ng-model="registro.tel_cel"
+                        ng-pattern="RegExp.integer"
+                        ng-maxlength="8"  
+                        ng-minlength="8"                         
+                    >
+                   <span ng-show="formRegistro.tel_celular.$valid && formRegistro.tel_celular.$submitted
+                                  || formRegistro.tel_celular.$valid && formRegistro.tel_celular.$dirty" 
+                         class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true">
+                    </span>
+
+                    <span ng-show="formRegistro.tel_celular.$invalid && formRegistro.$submitted
+                                   || formRegistro.tel_celular.$invalid && formRegistro.tel_celular.$dirty" 
+                          class="glyphicon glyphicon-remove form-control-feedback" 
+                          aria-hidden="true">
+                    </span>
+
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.tel_celular.$error.pattern || formRegistro.tel_celular.$error.maxlength">
+                        Por favor ingrese solo:</br><strong>8 digitos - 22445566</strong>.
+                    </div>                                    
+                </div>
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : formRegistro.tel_oficina.$invalid && !formRegistro.tel_oficina.$pristine || 
+                                        formRegistro.tel_oficina.$invalid && formRegistro.$submitted,
+                        'has-error' : formRegistro.tel_oficina.$error.pattern,
+
+                        'has-success' : formRegistro.tel_oficina.$valid && formRegistro.$submitted
+                                  || formRegistro.tel_oficina.$valid && formRegistro.tel_oficina.$dirty
+                    }">
+                    <label for="tel_oficina" class="control-label">Teléfono oficina</label>
+                    <input id="tel_oficina" name="tel_oficina" type="text" class="form-control"  placeholder="Ingrese el número de su oficina" 
+                    	ng-required="false";
+                        ng-model="registro.tel_oficina"
+                        ng-pattern="RegExp.integer"
+                        ng-maxlength="8"  
+                        ng-minlength="8"                         
+                    >
+                   <span ng-show="formRegistro.tel_oficina.$valid && formRegistro.$submitted
+                                  || formRegistro.tel_oficina.$valid && formRegistro.tel_oficina.$dirty" 
+                         class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true">
+                    </span>
+
+                    <span ng-show="formRegistro.tel_oficina.$invalid && formRegistro.$submitted
+                                   || formRegistro.tel_oficina.$invalid && formRegistro.tel_oficina.$dirty" 
+                          class="glyphicon glyphicon-remove form-control-feedback" 
+                          aria-hidden="true">
+                    </span>
+
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.tel_oficina.$error.pattern || formRegistro.tel_oficina.$error.maxlength">
+                        Por favor ingrese solo:</br><strong>8 digitos - 22445566</strong>.
+                    </div>                                        
+                </div>
+
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : formRegistro.tel_fax.$invalid && !formRegistro.tel_fax.$pristine || 
+                                        formRegistro.tel_fax.$invalid && formRegistro.$submitted,
+                        'has-error' : formRegistro.tel_fax.$error.pattern,
+
+                        'has-success' : formRegistro.tel_fax.$valid && formRegistro.$submitted
+                                  || formRegistro.tel_fax.$valid && formRegistro.tel_fax.$dirty
+                    }">
+                    <label for="tel_fax" class="control-label">Fax</label>
+                    <input id="tel_fax" name="tel_fax" type="text" class="form-control"  placeholder="Ingrese su número de fax"
+                        ng-required="false"
+                        ng-model="registro.tel_fax"
+                        ng-pattern="RegExp.integer"
+                        ng-maxlength="8"
+                        ng-minlength="8"
+                    >
+                   <span ng-show="formRegistro.tel_fax.$valid && formRegistro.$submitted
+                                  || formRegistro.tel_fax.$valid && formRegistro.tel_fax.$dirty" 
+                         class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true">
+                    </span>
+
+                    <span ng-show="formRegistro.tel_fax.$invalid && formRegistro.$submitted
+                                   || formRegistro.tel_fax.$invalid && formRegistro.tel_fax.$dirty" 
+                          class="glyphicon glyphicon-remove form-control-feedback" 
+                          aria-hidden="true">
+                    </span>
+
+                    <div class="alert alert-danger" role="alert" ng-show="formRegistro.tel_fax.$error.pattern || formRegistro.tel_fax.$error.maxlength">
+                        Por favor ingrese solo:</br><strong>8 digitos - 22445566</strong>.
+                    </div>                             
+                </div>
+
+            </div>            
+        </div>
 
 
-    </div>
+
+        <div class="row-fluid">
+        <!-- col-xs-12 col-sm-6 col-md-6 col-lg-3 -->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"><!-- 
+                <div class="form-group has-feedback" ng-controller="DatePickerCtrl">
+                    <label for="nacimiento">Fecha de nacimiento</label>
+                    <p class="input-group">
+                      <input type="text" class="form-control" datepicker-popup="{{format}}" placeholder="Formato 12-25-1980" ng-model="registro.nacimiento" ng-change="processDate(registro.nacimiento)" is-open="opened" min-date="minDate" max-date="dt" datepicker-options="dateOptions"  ng-required="true" close-text="Close" show-button-bar="false"/>
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                    </p>    
+                </div>        -->
+        
+     
+            <div class="form-group">
+                <label>Desea usted brindar su ayuda al <strong>Partido Acción Ciudadana?</strong></label> 
+                <div class="input-group">
+                    <div class="checkbox">                       
+                        <label for="colaborador_si">                         
+                            <input id="colaborador_si" type="checkbox"
+                                ng-model="registro.colaborador"
+                            >
+                            Si, deseo hacerlo.                                 
+                        </label>                                                                     
+                    </div>
+                    <div class="checkbox">
+                        <label for="colaborador_no"> 
+                            <input id="colaborador_no" type="checkbox"
+                                ng-model="registro.colaborador"
+                                ng-true-value="false"
+                                ng-click="limpiarColabora()"                                                                  
+                            >
+                            No en este momento.
+                        </label>
+                    </div>
+                </div>                                  
+            </div>
+            <div class="form-group sample" ng-show="registro.colaborador"  >
+                <label id="colabora">Deseo apoyar con los siguientes rubros:</label>
+                <div class="checkbox">
+                    <label for="colabora_organizacion"> 
+                        <input id="colabora_organizacion" type="checkbox"
+                            ng-model="registro.colabora_organizacion"                                                      
+                        >
+                        Organización
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="colabora_miembro_mesa"> 
+                        <input id="colabora_miembro_mesa" type="checkbox"
+                            ng-model="registro.colabora_miembro_mesa"                                                       
+                        >
+                        Miembro de mesa
+                    </label>
+                </div>                        
+                <div class="checkbox">
+                    <label for="colabora_fiscal"> 
+                        <input id="colabora_fiscal" type="checkbox"
+                            ng-model="registro.colabora_fiscal"                           
+                        >
+                        Fiscal
+                    </label>                        
+                </div>
+                <div class="checkbox">
+                    <label for="colabora_transporte"> 
+                        <input id="colabora_transporte" type="checkbox"
+                            ng-model="registro.colabora_transporte"                                                      
+                        >
+                        Transporte
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label for="contribuyente"> 
+                        <input id="contribuyente" type="checkbox"
+                            ng-model="registro.contribuyente"                                                                  
+                        >
+                        Contribucion económica.
+                    </label>
+                </div>
+                <div class="form-group has-feedback"
+                    ng-class="{     
+                        'has-warning' : formRegistro.colabora_otros.$invalid && !formRegistro.colabora_otros.$pristine || 
+                                        formRegistro.colabora_otros.$invalid && formRegistro.$submitted,
+                        'has-error' : formRegistro.colabora_otros.$error.maxlength,
+                        'has-success' : formRegistro.colabora_otros.$valid && formRegistro.colabora_otros.$dirty 
+                    }"> 
+                    <label for="colabora_otros" class="control-label">Otra:</label>                                
+                    <textarea class="form-control" name="colabora_otros" id="colabora_otros" value="{{registro.colabora_otros}}" type="text"
+                            rows="2"
+                        ng-model="registro.colabora_otros"
+                        ng-maxlength="150"
+                    ></textarea>					                    
+                </div>                                    
+            </div>                           
+        </div>
+        <div class="row">
+            <div class="col-xs-12 pull-right">
+                
+                <div class="alert alert-success" role="alert" ng-show="formRegistro.$valid">
+                    <strong>Gracias por completar el formulario!</strong> De un click en <strong>Registrarme</strong> para terminar.
+                </div>
+                <div class="alert alert-warning" role="alert" ng-show="formRegistro.$error.required && formRegistro.$submitted">
+                    Por favor ingrese la <strong>información faltante</strong>.
+                </div>  
+
+	            <div class="alert alert-danger" ng-class="{ 'alert-danger' : formRegistro.$submitted , 'alert-warning' :!formRegistro.$submitted }" role="alert" ng-show="formRegistro.$error.pattern">
+	            	<p class="text-center">Hay espacios con <strong>información invalida</strong>.</p>            
+	            </div>            
+
+	          <!--   <div class="alert alert-warning" role="alert" ng-show="formRegistro.$error.pattern">
+	            	<p class="text-center">
+	            	<p>Hay espacios con <strong>información invalida</strong>.</p>
+	            </div> -->
+            </div>
+
+            <div class="col-xs-12 col-md-4 pull-right">           
+                <div class="form-group pull-right">
+                <button type="submit" class="btn btn-primary">Registrarme</button> 
+                <button type="button" class="btn btn-default" ng-click="limpiar()">Limpiar</button> 
+                </div>
+            </div>
+        </div>
+    </form>
+	<div class="row">
+		<div class="col-xs-12">
+			<pre>{{registro}}</pre>  
+            <pre>{{solicitud}}</pre> 		
+		</div>
+	</div>    
+	
+
+   
+
+    <!-- {{distelec.provincia[3].canton[ distelec.provincia[3].canton["01"].codigo ].distrito}} -->
+    
+    <!-- <p ng-repeat="distrito in distelec.provincia[3].canton[01].distrito">{{distrito.nombre}}</p> -->
+    
 </div>
+    <!-- ng-class="{ 'alert-danger' : formConsultaCedula.cedula.$error.maxlength , 'alert-warning' :formConsultaCedula.cedula.$error.minlength }" --> 
+
+
+

@@ -1,11 +1,30 @@
-.custom-center,
-img{
-	margin: 0 auto;
+
+.sample {
+  -webkit-transition:all linear 0.4s;
+  transition: all linear 0.4s;
+  position: relative;
+  top:0px;
+  
 }
-img{
-	width: 50% ;
-	display: block;
+
+
+.sample.ng-hide {
+	top:-225px;
+  	opacity:0;
+  
+} 
+
+
+.animation-include-index{
+	-webkit-transition:all linear 0.2s;
+  	transition: all linear 0.2s;
+  	opacity:1;
 }
-header{
-	margin:1em 0 ;
+
+.animation-include-index.ng-enter{	
+  	opacity:0;
+}
+
+.animation-include-index.ng-leave{	
+  	opacity:1;
 }
